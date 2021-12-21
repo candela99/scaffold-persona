@@ -1,0 +1,41 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Personas</h1>
+
+<% if (@personas.size >= 1) %>
+<table border="1px">
+  <tr>
+    <thead>
+      <th>Nombre:</th>
+      <th>Apellido:</th>
+      <th>Fecha de nacimiento:</th>
+      <th>DNI:</th>
+      <th>Edad:</th>
+    </thead>
+  </tr>
+  <% (Persona.ordenar(@personas)).each do |persona| %>
+  <tr>
+    <td><%= persona.nombre %></td>
+    <td><%= persona.apellido %></td>
+    <td><%= persona.fecha_de_nacimiento %></td>
+    <td><%= persona.nro_dni %></td>
+    <td><%= persona.edad %></td>
+    <td>
+      <%= link_to "Ver persona", persona %>
+    </td>
+  </tr>
+  <% end %>
+</table>
+<h3>Edad promedio: <%= Persona.edad_promedio(@personas) %></h3>
+<%= link_to "Agregar persona", new_persona_path %>
+<% else %>
+<%= link_to "Agregar persona", new_persona_path %>
+<% end %>
+<style media="screen">
+  th {
+    background-color: #8C4966
+  }
+  td {
+    background-color: #BBA9BB
+  }
+</style>
