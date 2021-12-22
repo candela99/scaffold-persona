@@ -1,20 +1,20 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Personas</h1>
+<h1 class = "centrado">Personas</h1>
 
 <% if (@personas.size >= 1) %>
-<table border="1px">
-  <tr>
+<table class = "tabla">
+  <tr class = "centrado">
     <thead>
-      <th>Nombre:</th>
-      <th>Apellido:</th>
-      <th>Fecha de nacimiento:</th>
-      <th>DNI:</th>
-      <th>Edad:</th>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Fecha de nacimiento</th>
+      <th>DNI</th>
+      <th>Edad</th>
     </thead>
   </tr>
   <% (Persona.ordenar(@personas)).each do |persona| %>
-  <tr>
+  <tr class = "centrado">
     <td><%= persona.nombre %></td>
     <td><%= persona.apellido %></td>
     <td><%= persona.fecha_de_nacimiento %></td>
@@ -26,16 +26,33 @@
   </tr>
   <% end %>
 </table>
-<h3>Edad promedio: <%= Persona.edad_promedio(@personas) %></h3>
-<%= link_to "Agregar persona", new_persona_path %>
+<h3 class = "centrado">Edad promedio: <%= Persona.edad_promedio(@personas) %></h3>
+<h3 class = "centrado"> <%= link_to "Agregar persona", new_persona_path %> </h3>
 <% else %>
-<%= link_to "Agregar persona", new_persona_path %>
+<h3 class = "centrado"> <%= link_to "Agregar persona", new_persona_path %> </h3>
+
 <% end %>
 <style media="screen">
+  .centrado {
+    text-align:center;
+  }
+  .tabla {
+    margin: auto;
+    width: 60%;
+    border: 1px solid #000;
+    border-spacing: 0;
+    border-collapse: collapse;
+    padding: 0.8em;
+  }
+  body {
+    background-color: #ECE4B7
+  }
   th {
+    border: 1px solid #000;
     background-color: #8C4966
   }
   td {
+    border: 1px solid #000;
     background-color: #BBA9BB
   }
 </style>
